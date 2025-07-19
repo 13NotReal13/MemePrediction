@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct APIResponse {
+struct APIResponse: Codable {
     let succes: Bool
     let data: [Meme]
 }
 
-struct Meme {
+struct Meme: Codable {
     let id: String
     let name: String
     let url: String

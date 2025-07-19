@@ -10,7 +10,7 @@ import Combine
 
 final class APIManager: ObservableObject {
     
-    func getMemes() throws -> AnyPublisher<Data, Error> {
+    func getMemes() throws -> AnyPublisher<[Meme], Error> {
         guard let url = URL(string: "https://api.imgflip.com/get_memes") else {
             throw URLError(.badURL)
         }
@@ -26,7 +26,7 @@ final class APIManager: ObservableObject {
                 
                 return data
             }
-            .decode(type: Data.self, decoder: JSONDecoder())
+            .decode(type: [Meme].self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }
